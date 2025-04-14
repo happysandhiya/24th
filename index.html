@@ -108,21 +108,23 @@
     }
 
     .photo-slider {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    .photo-slider img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: none;
-      transition: opacity 1s ease-in-out;
-      border-radius: 20px;
-    }
+        position: relative;
+        width: 100%;
+        max-width: 450px; /* Tambahkan ini untuk memperkecil ukuran */
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      }
+      
+      .photo-slider img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: none;
+        transition: opacity 1s ease-in-out;
+        border-radius: 20px;
+      }
 
     .photo-slider img.active {
       display: block;
@@ -198,6 +200,83 @@
     .open-btn:hover {
       background: #d63f3f;
     }
+
+    .memories-title {
+        text-align: center;
+        margin-top: 4rem;
+        animation: bling 2s infinite;
+        font-size: 2.5rem;
+        color: var(--color-secondary);
+        text-shadow: 0 0 10px #fff, 0 0 20px #ffd700, 0 0 30px #ffcf40, 0 0 40px #ffcf40;
+    }
+    
+    /* Kalau masih ingin efek muncul dari bawah, bisa digabung */
+    @keyframes bling {
+        0% {
+            text-shadow: 0 0 5px #fff, 0 0 10px #ffd700, 0 0 20px #ffcf40;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        50% {
+            text-shadow: 0 0 20px #fff, 0 0 30px #ffd700, 0 0 40px #ffcf40;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            text-shadow: 0 0 5px #fff, 0 0 10px #ffd700, 0 0 20px #ffcf40;
+        }
+    }:root {
+        --color-secondary: #ff4e50;
+        --color-memories: #ffffff; /* atau warna lain yang kamu inginkan */
+      }
+      
+      .memories-title {
+        text-align: center;
+        margin-top: 4rem;
+        animation: fadeInUp 1.5s ease-out;
+      }
+      
+      .memories-title h2 {
+        font-size: 2.5rem;
+        color: var(--color-memories);
+        text-shadow:
+          0 0 5px #fff,
+          0 0 10px #ffd700,
+          0 0 20px #ffae00,
+          0 0 30px #ffae00;
+        animation: blingBling 1.5s infinite alternate;
+      }
+      
+      /* Animasi bling-bling */
+      @keyframes blingBling {
+        0% {
+          text-shadow:
+            0 0 5px #fff,
+            0 0 10px #ffd700,
+            0 0 20px #ffae00,
+            0 0 30px #ffae00;
+          transform: scale(1);
+        }
+        100% {
+          text-shadow:
+            0 0 10px #fff,
+            0 0 20px #ffd700,
+            0 0 30px #ffae00,
+            0 0 40px #ffae00;
+          transform: scale(1.03);
+        }
+      }
+      
+    .future-text {
+        text-align: center;
+        margin-top: -1rem;
+        font-size: 1.3rem;
+        color: var(--color-primary);
+        text-shadow: 0 0 10px #ffd700, 0 0 20px #ffcf40;
+        animation: fadeInUp 1.5s ease-out;
+    }
+      
+      
 
     .modal {
       display: none;
@@ -295,9 +374,32 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('image.png'); /* pastikan file ada di folder yang sama dengan HTML */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        font-family: 'Poppins', sans-serif;
+        color: #fff; /* biar teks tetap terlihat */
+      }
+    .background-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* transparansi hitam */
+        z-index: -1;
+    }
+      
+      
   </style>
 </head>
 <body>
+    
   <header>
     <h1>Happiest 24th Birthday, My Moon! 🌙❤️</h1>
     <p>This is a little summary your journey, beberapa ucapan, and some little gift for u sayang ✨💕.</p>
@@ -345,20 +447,123 @@
     <p>Bayek, di ultah kao yang ke 24 ini aku pengen ngajak kamu nginget semua perjalanan luar biasa yang sudah kita lewatin. Kayak Cody dan May di game "It Takes Two", kita belajar dari tiap tantangan, saling nguatin, dan nggak pernah menyerah. Kao adalah player 1 terbaikku, dan aku akan terus milih "continue" sama kamu. Love u bayek! ❤️</p>
   </section>
 
+  <section class="memories-title">
+    <h2 class="memories-title">Our Memories 👫</h2>
+  </section>
+  
   <section class="gallery">
     <div class="gallery-item">
-      <img src="img/foto1.jpg" alt="Foto 1">
-      <button class="open-btn" onclick="openModal('Foto 1', 'Ini adalah kenangan indah pertama kita bersama.')">Open It</button>
+      <img src="img/1.png" alt="Foto 1">
+      <button class="open-btn" onclick="openModal('Sie 2', 'Sie 2, tempat dimana aku ketemu dan kenal lebih dekat sama yang namanya Muhammad Hilal. Dari sini kita makin deket dan jadi doi deh. Tapi ditahap ini kita masih denial😏')">Open It</button>
     </div>
     <div class="gallery-item">
-      <img src="img/foto2.jpg" alt="Foto 2">
-      <button class="open-btn" onclick="openModal('Foto 2', 'Ini adalah momen yang sangat spesial saat kita liburan ke Bali.')">Open It</button>
+      <img src="img/2.png" alt="Foto 2">
+      <button class="open-btn" onclick="openModal('Our sign', 'Our sign, first time juga kita balik kampus berdua (ciee). Hari ini juga kita jadian (yeay 🎉).')">Open It</button>
     </div>
     <div class="gallery-item">
-      <img src="img/foto3.jpg" alt="Foto 3">
-      <button class="open-btn" onclick="openModal('Foto 3', 'Ini adalah kenangan manis saat kita pergi ke taman bersama.')">Open It</button>
+      <img src="img/3.png" alt="Foto 3">
+      <button class="open-btn" onclick="openModal('Our Meet', 'Kita jadi tiap hari meet, saling ngisi waktu disela ngerjain TA (huaaa).')">Open It</button>
     </div>
+    <div class="gallery-item">
+        <img src="img/4.png" alt="Foto 4">
+        <button class="open-btn" onclick="openModal('Semprotulation', 'Yeay akhirnya bayek ako semproo, keren banget dioo, banyak sambat tapi akhirnya bisaa kannn 🥰.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/5.png" alt="Foto 5">
+        <button class="open-btn" onclick="openModal('Sackboy', 'Pokoknya kalo pas jam pesiar gass mainnn 🎮, sambil mam snack yang nitip ke temen pesiar diluar.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/6.png" alt="Foto 6">
+        <button class="open-btn" onclick="openModal('My Fox', 'Bayek ini keren nian, dia kepilih jadi DB tenor, tapi aku ga bisa nemani bayek hihi. But gapapa, bayek selalu bilang dia gapernah nuntut aku buat sama2 ikut DB.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/7.png" alt="Foto 7">
+        <button class="open-btn" onclick="openModal('Bayek Sibuk DB', 'Suka kasian ma bayek ako, dia cape2 DB, cuman semua kebayar kok, dia keren banget. Apa lagi pas foto ini, beuh damage nya ga main2 eoiii 🫠.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/8.png" alt="Foto 8">
+        <button class="open-btn" onclick="openModal('First Perform DB', 'Tuh kan ganteng banget kann, bangga banget lhoh ako ma dia 😘.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/9.png" alt="Foto 9">
+        <button class="open-btn" onclick="openModal('Hangout ke Dhari Bhumi', 'Kita putusin buat curi2 pesiar jauh sebelum berangkat latsitarda. Plus ini first photobox kita lhoo 📸.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/10.png" alt="Foto 10">
+        <button class="open-btn" onclick="openModal('Pentas Seni', 'Aku as kabiro birsen, kao as pacar kabirsen 🤭. Jujur sebenernya awalnya aku insecure soalnya terbebani sama jabatan dan ngerasa kurang all out. Tapi semua itu langsung ilang pas kao liat aku pertama kali dateng, terus kao nunjukin ekspresi amazed ke aku. Centil era is beggin 💅🏻')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/11.png" alt="Foto 11">
+        <button class="open-btn" onclick="openModal('Perform Latsitarda', 'Pas ini perasaan campur aduk banget, bangga bisa liat ayangko yang keren (pacar gueh niehh), seneng bisa ketemu langsunggg, sedih juga soalnya abis ini kita pisah daerah 🥺.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/12.png" alt="Foto 12">
+        <button class="open-btn" onclick="openModal('Bayek Latsitarda', 'Bayek aku jadi idola Latsitarda ckckkc.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/13.png" alt="Foto 13">
+        <button class="open-btn" onclick="openModal('First Sunset', 'Seneng banget abis sebulan pisah dari ayang, akhirnya ketemu di kapal barengg. Terus nikmatin sunset pertama kita 🌇.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/14.png" alt="Foto 14">
+        <button class="open-btn" onclick="openModal('Our Semhas', 'After balik Latsitarda, kita berjuang buat nyiapin semhas. Asli pas ini aku jatuh bangun banget. Tapi kao selalu encourage aku. And this pic has deep meaning on me, your eyes on me 🥰')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/15.png" alt="Foto 15">
+        <button class="open-btn" onclick="openModal('LDK', 'Aku dijahatin sama beberapa orang 🥲, tapi kao selalu siap sedia buat ngelindungin dan dampingi aku 💃🏻. Foto ini lucu banget, kita lagi benerin bulan bareng 🌕')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/16.png" alt="Foto 16">
+        <button class="open-btn" onclick="openModal('Sidang 100%', 'We finally got through it all. So proud of you sayang, aku bersyukur banget bisa dampingin kao juga pas sidang')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/17.png" alt="Foto 17">
+        <button class="open-btn" onclick="openModal('Foto persiapan Wisuda', 'Aura S.Tr,Kom udah tercium dari jarak 1 kilometerrr.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/18.png" alt="Foto 18">
+        <button class="open-btn" onclick="openModal('Purna Taruna', 'Moment terharu banget, kita bisa keluar gerbang bumi sanapati bareng 👫.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/foto1.jpg" alt="Foto 1(1)">
+        <button class="open-btn" onclick="openModal('Wisuda 👩🏻‍🎓👨🏻‍🎓', 'Puncak syukur kita, akhirnya bisa lulus dan wisuda barenggg.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/19.png" alt="Foto 19">
+        <button class="open-btn" onclick="openModal('Work', 'Ayang ako bubukkkk pas kerjaaa (dasar bayek gemas).')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/20.png" alt="Foto 20">
+        <button class="open-btn" onclick="openModal('Bonbin Ragunan 🐘', 'Dulu hampir tiap minggu kita ke ragunan ckckck. Mulai dari muter2 doang, sampe tamasya disana. Cocok nih jadi duta ragunan 🤪.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/21.png" alt="Foto 21">
+        <button class="open-btn" onclick="openModal('Our Bricks', 'Suka banget kalo kita udah nyusuh bricks bareng hihi. Our Judy and Nick.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/22.png" alt="Foto 22">
+        <button class="open-btn" onclick="openModal('It takes two', 'Our first game yang udah kita tamatin, mulai dari main di we drink bareng, sampai selesaiin di kos aku xixixi.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/23.png" alt="Foto 23">
+        <button class="open-btn" onclick="openModal('Blok M', 'Kulineran, muter2 sampe perut kenyangggg. Ditambah lagii kita otw nya naik MRT! makin syahdu deh (ihiy).')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/24.png" alt="Foto 24">
+        <button class="open-btn" onclick="openModal('First Timezone', 'Puas banget main timezone sama ayangg, seneng banget bisa menuhin innerchild akoo. Love u sayang 🥰.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/25.png" alt="Foto 25">
+        <button class="open-btn" onclick="openModal('Etive', 'Dengan gaya andalan ayang. Menyala gapura kabupatenkuu 🔥💪🏻.')">Open It</button>
+    </div>
+    <div class="gallery-item">
+        <img src="img/26.jpg" alt="Foto 26">
+        <button class="open-btn" onclick="openModal('Last Mukbang Before Ayang Puasa', 'First Time kita mam di aeon. Tapi asli sih, ayang ako emang ganteng selalu 😎.')">Open It</button>
+    </div>  
   </section>
+
+  <p class="future-text">and future stories, we will paint together.</p>
+
 
   <div id="myModal" class="modal">
     <div class="modal-content">
@@ -377,7 +582,7 @@
   </section>
 
   <audio id="bgm" autoplay loop>
-    <source src="musik.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
     Browser kamu tidak mendukung audio
   </audio>
 
@@ -427,4 +632,6 @@
     setInterval(showNextSlide, 3000);
   </script>
 </body>
+<div class="background-overlay"></div>
+
 </html>
